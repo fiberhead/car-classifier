@@ -3,8 +3,8 @@ import cv2 as cv
 from resnet_152 import resnet152_model
 
 
-def load_model():
-    model_weights_path = 'models/model.96-0.89.hdf5'
+def load_model(model_path):
+    model_weights_path = model_path
     img_width, img_height = 224, 224
     num_channels = 3
     num_classes = 196

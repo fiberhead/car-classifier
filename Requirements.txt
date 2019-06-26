@@ -1,6 +1,6 @@
-numpy
-tensorflow-gpu
+Flask
+tensorflow
+requests
+opencv-python
 keras
-pillow
 sklearn
-console-progressbar
