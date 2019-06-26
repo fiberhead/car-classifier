@@ -103,3 +103,30 @@ prob: 0.9999994
 |Nissan Juke Hatchback 2012, prob: 0.9935|Chevrolet TrailBlazer SS 2009, prob: 0.987|Hyundai Accent Sedan 2012, prob: 0.9826|Ford Fiesta Sedan 2012, prob: 0.6502|
 |![image](https://github.com/foamliu/Car-Recognition/raw/master/images/16_out.png) | ![image](https://github.com/foamliu/Car-Recognition/raw/master/images/17_out.png)|![image](https://github.com/foamliu/Car-Recognition/raw/master/images/18_out.png) | ![image](https://github.com/foamliu/Car-Recognition/raw/master/images/19_out.png)|
 |Acura TL Sedan 2012, prob: 0.9999|Aston Martin V8 Vantage Coupe 2012, prob: 0.5487|Infiniti G Coupe IPL 2012, prob: 0.2621|Ford F-150 Regular Cab 2012, prob: 0.9995|
+
+
+
+#### Docker for API
+
+You can build and run the docker using the following process:
+
+Cloning
+```console
+git clone https://github.com/jqueguiner/car-classification.git car-classification
+```
+
+Building Docker
+```console
+cd car-classification && docker build -t car-classification -f Dockerfile .
+```
+
+Running Docker
+```console
+echo "http://$(curl ifconfig.io):5000" && docker run -p 5000:5000 -d car-classification
+```
+
+Calling the API for image detection
+```console
+curl -X POST "http://MY_SUPER_API_IP:5000/detect" -H "accept: image/png" -H "Content-Type: application/json" -d '{"url":"https://i.ibb.co/Lzpp400/input.jpg"}'
+```
+
