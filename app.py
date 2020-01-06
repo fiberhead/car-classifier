@@ -51,6 +51,8 @@ except ImportError:
 app = Flask(__name__)
 
 
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 def load_my_model(model_path, weights_path):
@@ -72,9 +74,14 @@ def detect():
     output_path = generate_random_filename(upload_directory, "jpg")
 
     try:
-        url = request.json["url"]
-
-        download(url, input_path)
+        if 'file' in request.files:
+            file = request.files['file']
+            if allowed_file(file.filename):
+                file.save(input_path)
+            
+        else:
+            url = request.json["url"]
+            download(url, input_path)
        
         results = []
 
@@ -109,6 +116,8 @@ if __name__ == '__main__':
     global model, graph
     global img_width, img_height
     global class_names
+    global ALLOWED_EXTENSIONS
+    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
     
 
     upload_directory = '/src/upload/'
