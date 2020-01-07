@@ -127,12 +127,12 @@ if __name__ == '__main__':
     model_file = "resnet152_weights_tf.h5"
     weights_file = "model.96-0.89.hdf5"
 
-    cloud_storage_prefix = "https://storage.gra5.cloud.ovh.net/v1/AUTH_18b62333a540498882ff446ab602528b/pretrained-models/image/car-classifier/v0/"
+    url_prefix = "https://storage.gra5.cloud.ovh.net/v1/AUTH_18b62333a540498882ff446ab602528b/pretrained-models/image/"
 
-    get_multi_model_bin([
-        (cloud_storage_prefix + model_file, model_path + model_file),
-        (cloud_storage_prefix + weights_file, model_path + weights_file)
-        ])
+
+
+    for i in [model_file, weights_file]:
+        get_model_bin(url_prefix + "car-classifier/v0/" + i , model_path + i)
 
     model, graph = load_my_model(model_path + model_file, model_path + weights_file)
 
