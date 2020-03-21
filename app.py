@@ -127,7 +127,7 @@ if __name__ == '__main__':
     model_file = "resnet152_weights_tf.h5"
     weights_file = "model.96-0.89.hdf5"
 
-    url_prefix = "https://storage.gra5.cloud.ovh.net/v1/AUTH_18b62333a540498882ff446ab602528b/pretrained-models/image/"
+    url_prefix = "https://storage.gra.cloud.ovh.net/v1/AUTH_18b62333a540498882ff446ab602528b/pretrained-models/image/"
 
 
 
